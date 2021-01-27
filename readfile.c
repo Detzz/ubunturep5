@@ -7,10 +7,12 @@ void	analyse(char *line)
 	if (line[0] == ' ' || line[0] == '1')
 	{
 		mapfinding = 1;
+		tmp = s;
 		s = ft_strjoin(s, line);
+		free(tmp);
 		tmp = s;
 		s = ft_strjoin(s, "\n");
-		free (tmp);
+		free(tmp);
 		tmp = NULL;
 	}
 	if (line[0] == 'R' && line[1] == ' ')
@@ -35,6 +37,7 @@ void	read_line(void)
 {
 	int		fd;
 	char	*line;
+	int		i;
 
 	init_param();
 	fd = open("map.cub", O_RDONLY);
@@ -50,7 +53,14 @@ void	read_line(void)
 	}
 	treatmap(s);
 	if(s)
-	free(s);
+	{
+		// i = -1;
+		// while(s[++i]!= '\0')
+		// 	free(s[i]);
+		free(s);
+
+	}
+
 	free(line);
 }
 
@@ -61,7 +71,7 @@ void	texture(char *line)
 	int		i;
 
 	i = -1;
-	s3 = ft_split_whitespaces(line);
+	s3 = ft_split(line,' ');
 	if (s3[2] != '\0')
 	{
 		printf("ERROR ");
@@ -78,8 +88,8 @@ void	texture(char *line)
 		traitestexture(s3, fd);
 	if (s3[0][0] == 'S' && s3[0][1] != 'O')
 		traitspactex(s3, fd);
-	//while (++i <2 )
-	//	free(s3[i]);
+	while (s3[++i] != NULL)
+		free(s3[i]);
 	free(s3);
 
 }

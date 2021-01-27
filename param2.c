@@ -17,7 +17,7 @@ void	resolution(char *line)
 	char	**s;
 	int		j;
 
-	s = ft_split_whitespaces(line);
+	s = ft_split(line,' ');
 	checkresolutionparam(check.Resolution, s);
 	if (s[3] != '\0')
 	{
@@ -35,7 +35,12 @@ void	resolution(char *line)
 		param.g_height = 1440;
 	else
 		param.g_height = atoi(s[2]);
+	j = -1;
+	while (s[++j]!= '\0')
+		free(s[j]);
 	free(s);
+	//free(line);
+
 }
 
 void	init(void)

@@ -33,7 +33,7 @@ all : $(NAME)
 
 $(NAME) : ${OBJS}
 		
-		CC -g -I /usr/local/include/mlx.h -L /usr/local/lib/  -lmlx   $(OPENGL) -lm $(OBJS) -o $(NAME) 
+		CC -g -I /usr/local/include/mlx.h -L /usr/local/lib/ -lmlx   $(OPENGL) -lm $(OBJS) -o $(NAME) 
 
 .c.o : ${SRC}
 			CC  -c $(PATH) $< -o ${<:.c=.o}

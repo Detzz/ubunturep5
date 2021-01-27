@@ -98,6 +98,7 @@ void	traitspactex(char **s, int fd)
 	{
 		check.Sprite = 1;
 	}
+	//tex.file[4] = malloc(sizeof(char) * strlen(s[1]));
 	tex.file[4] = strdup(s[1]);
 	if ((fd = open(tex.file[4], O_RDONLY) == -1))
 	{

@@ -69,13 +69,15 @@ int		res_handel(char **res, char **line, int n, char *buffer)
 int		handle_buffer(char *buffer, char **res, char **line, int fd)
 {
 	int		n;
-
+	char	*tmp;
 	while ((n = read(fd, buffer, BUFFER_SIZE)) >= 0)
 	{
 		buffer[n] = '\0';
 		if (n > 0)
 		{
+			tmp = *res;
 			*res = ft_strjoin(*res, buffer);
+			free(tmp);
 			if (ft_strchr(buffer, '\n') != NULL)
 				return (res_handel(res, line, n, buffer));
 		}

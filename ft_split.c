@@ -1,49 +1,74 @@
 #include "INC/cub3d.h"
 
-int		taillestandard(char *s, char c )
+static	size_t		len_word(const char *s, char c)
 {
-	int	i;
-	int	count;
+	size_t	i;
+	size_t	len;
 
-	i = -1;
-	count = 1;
-	while (s[++i])
+	i = 0;
+	len = 0;
+	while (s[i] == c)
+		i++;
+	while (s[i] != c && s[i++])
+		len++;
+	return (len);
+}
+
+static	size_t		count_word(const char *s, char c)
+{
+	size_t	i;
+	size_t	count;
+
+	i = 0;
+	count = 0;
+	while (s[i])
 	{
-		if (s[i] == c)
-		{
-			if (s[i + 1] != '\0' && s[i + 1] != c)
-				count++;
-		}
+		if (s[i] != c)
+			count++;
+		while (s[i] != c && s[i + 1])
+			i++;
+		i++;
 	}
 	return (count);
 }
 
-char	**ft_split(char *str, char c )
+void				*free_split(char **split, int k)
 {
-	char	**tab;
-	int		i;
-	int		j;
-	int		is_wspaces;
-
-	i = -1;
-	j = 0;
-	is_wspaces = 1;
-	if (!(tab = (char**)malloc(sizeof(char*) * (taillestandard(str, c) + 1))))
-		return (0);
-	while (str[++i])
+	while (k >= 0)
 	{
-		if (is_wspaces && str[i] != c)
-		{
-			tab[j++] = &str[i];
-			is_wspaces = 0;
-		}
-		else if (str[i] == c )
-		{
-			str[i] = '\0';
-			is_wspaces = 1;
-		}
+		free(split[k]);
+		k--;
 	}
-	tab[j] = 0;
-	//free(str);
-	return (tab);
+	free(split);
+	split = NULL;
+	return (NULL);
+}
+
+char				**ft_split(char  *s, char c)
+{
+	size_t	i;
+	size_t	j;
+	size_t	k;
+	char	**split;
+
+	i = 0;
+	k = 0;
+	if (!s || !(split = (char **)malloc(sizeof(char *)
+					* (count_word(s, c) + 1))))
+		return (NULL);
+	while (i < count_word(s, c))
+	{
+		if (!(split[i] = (char *)malloc(sizeof(char)
+						* (len_word(&s[k], c) + 1))))
+			return ((free_split(split, k - 1)));
+		j = 0;
+		while (s[k] == c)
+			k++;
+		while (s[k] != c && s[k])
+			split[i][j++] = s[k++];
+		split[i][j] = '\0';
+		i++;
+	}
+	split[i] = NULL;
+	return (split);
 }

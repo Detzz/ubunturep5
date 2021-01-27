@@ -112,9 +112,10 @@ int		move_player(void *taram)
 	}
 	g_rays = malloc(sizeof(t_rays) * (param.g_width + 1));
 	castalleays();
+	//free(mapp);
 	mlx_put_image_to_window(g_mlx_ptr, g_win_ptr, img.img, 0, 0);
 	
-	//free(mapp);
+	
 	//free(param.s5);
 	return (0);
 }

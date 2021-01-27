@@ -175,7 +175,7 @@ t_params			param;
 int					g_count;
 char				*s;
 void				treatmap(char *line);
-char				**ft_split(char *str, char c);
+char				**ft_split(char *s, char c);
 int					g_spritecount;
 
 typedef struct	s_sprite
@@ -271,6 +271,7 @@ void	traitwetexture(char **s, int fd);
 void	traitestexture(char **s, int fd);
 void	traitspactex(char **s, int fd);
 void	checkdigit(char **s, int i);
+void	*free_split(char **split, int k);
 
 
 

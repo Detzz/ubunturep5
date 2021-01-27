@@ -23,8 +23,8 @@ void	renderhelper2(int i, int j)
 		my_mlx_pixel_put(&img, i * WALLSTRIPWIDTH, j, g_render.Color);
 		j++;
 	}
-/*	for(i = 0; i < 4;i++)
-	free(tex.file[i]);*/
+	//for(i = 0; i < 4;i++)
+	//free(tex.file[4]);
 }
 
 void	renderhelper1(int i, int j)

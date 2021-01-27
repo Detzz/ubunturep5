@@ -36,6 +36,9 @@ void	swappingmaps(char **map, char **S)
 		}
 		i++;
 	}
+	i = -1;
+	/*while(++i < param.num_rows)
+	free(S[i]);*/
 }
 
 void	handleerroe1(void)
@@ -76,6 +79,8 @@ void	treatmap(char *string)
 	char **S;
 
 	S = ft_split(string, '\n');
+	for(i = 0 ; S[i];i++)
+	printf("|%s|\n",S[i]);
 	//free(s);
 
 
@@ -113,5 +118,10 @@ void	treatmap(char *string)
 	handleerror2(mapp);
 	function_readingmaptogivespritecount(mapp);
 	g_sp = malloc(sizeof(g_param) * (g_spritecount + 1));
+	j = -1;
+	while (S[++j] != NULL)
+		free(S[j]);
+	free(S[j]);
 	free(S);
+	//free(string);
 }
