@@ -10,23 +10,29 @@ int		ft_destruct(void *taram)
 	// free(g_ea);
 	// free(g_we);
 	// free(data->sprite);
-	// while (g_codemap[i])
-	// {
-	// 	free(g_codemap[i]);
-	// 	i++;
-	// }
-	// free(g_codemap);
-	// free(data);
+	while (mapp[i])
+	{
+	 	free(mapp[i]);
+	 	i++;
+	}
+	 free(mapp);
+	free(g_sp);
 	exit(1);
 	return (0);
 }
 
 
 
-int main()
+int main(int argc,char **argv)
 {
-
-	read_line();
+	char	*file;
+	if (argc != 2)
+	{
+		printf("%s",argv[1]);
+		exit(1);
+	}
+	file = argv[1];
+	read_line(file);
 	init();
 	init_sprite();
 	g_mlx_ptr = mlx_init();

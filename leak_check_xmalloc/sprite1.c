@@ -130,6 +130,5 @@ void	draw_sprite(int id)
 				my_mlx_pixel_put(&img, i + g_sp[id].xof, j + g_sp[id].yof, c);
 		}
 	}
-	free(g_sp);
 	//free(ma)
 }

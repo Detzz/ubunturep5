@@ -73,7 +73,8 @@ void	render3dprojectwalls(void)
 		rendring(i);
 		renderhelper1(i, j);
 	}
-	free(g_rays);
+	//while(g_rays[i]!= NULL)
+		free(g_rays);
 	
 	//free(mapp);
 	to_sprite();

@@ -261,7 +261,7 @@ void	resolution(char *line);
 void	checkresolutionparam(int check, char **s);
 void	init(void);
 void	analyse(char *line);
-void	read_line(void);
+void	read_line(char *file);
 void	texture(char *line);
 void	traitrotaionangle(char c);
 void	init_param(void);

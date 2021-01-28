@@ -18,6 +18,22 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	}
 }
 
+int		haswallat2(float x, float y)
+{
+	int mapgridindexx;
+	int mapgridindexy;
+
+	mapgridindexx = floor(x / TITLESIZE);
+	mapgridindexy = floor(y / TITLESIZE);
+	if (mapgridindexy < 0 || mapgridindexy >= param.num_rows ||
+			mapgridindexx < 0 || mapgridindexx >= param.num_col)
+		return (0);
+	if (mapp[mapgridindexy + 1][mapgridindexx + 1] != '1' &&
+		mapp[mapgridindexy + 1][mapgridindexx + 1] != '2')
+		return (0);
+	return (1);
+}
+
 int		haswallat(float x, float y)
 {
 	int mapgridindexx;
@@ -105,7 +121,7 @@ int		move_player(void *taram)
 	movestep = g_cord->walkdirection * g_cord->movespeed;
 	newplayerx = g_cord->x + cos(g_cord->rotationangle) * movestep;
 	newplayery = g_cord->y + sin(g_cord->rotationangle) * movestep;
-	if (haswallat(newplayerx, newplayery) == 0)
+	if (haswallat2(newplayerx, newplayery) == 0)
 	{
 		g_cord->x = newplayerx;
 		g_cord->y = newplayery;

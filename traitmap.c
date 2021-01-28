@@ -79,10 +79,8 @@ void	treatmap(char *string)
 	char **S;
 
 	S = ft_split(string, '\n');
-	for(i = 0 ; S[i];i++)
-	printf("|%s|\n",S[i]);
-	//free(s);
-
+	
+	// free(string);
 
 
 
@@ -117,7 +115,7 @@ void	treatmap(char *string)
 	handleerroe1();
 	handleerror2(mapp);
 	function_readingmaptogivespritecount(mapp);
-	g_sp = malloc(sizeof(g_param) * (g_spritecount + 1));
+	//g_sp = malloc(sizeof(g_param) * (g_spritecount + 1));
 	j = -1;
 	while (S[++j] != NULL)
 		free(S[j]);

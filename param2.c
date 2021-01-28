@@ -36,7 +36,7 @@ void	resolution(char *line)
 	else
 		param.g_height = atoi(s[2]);
 	j = -1;
-	while (s[++j]!= '\0')
+	while (s[++j]!= NULL)
 		free(s[j]);
 	free(s);
 	//free(line);

@@ -33,14 +33,14 @@ void	analyse(char *line)
 		ceillingcolor(line);
 }
 
-void	read_line(void)
+void	read_line(char *file)
 {
 	int		fd;
 	char	*line;
 	int		i;
 
 	init_param();
-	fd = open("map.cub", O_RDONLY);
+	fd = open(file, O_RDONLY);
 	linecount = 0;
 	//s = strdup("");
 	g_spritecount = 0;
@@ -52,14 +52,14 @@ void	read_line(void)
 		free(line);
 	}
 	treatmap(s);
-	if(s)
-	{
+	//if(s)
+	//{
 		// i = -1;
 		// while(s[++i]!= '\0')
 		// 	free(s[i]);
 		free(s);
 
-	}
+	//}
 
 	free(line);
 }

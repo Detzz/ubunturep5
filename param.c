@@ -95,7 +95,7 @@ void	floorcolor(char *line)
 	free(s);
 	a = -1;
 	//free_split(s2,3);
-	while (s2[++a]!='\0')
+	while (s2[++a]!=NULL)
 	free(s2[a]);
 	free(s2);
 }
