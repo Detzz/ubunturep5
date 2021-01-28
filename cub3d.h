@@ -14,7 +14,7 @@
 #define CUBE3D_H
 
 #include <stdint.h>
-#include "mlx.h"
+#include "/usr/local/include/mlx.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -23,7 +23,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <string.h>
-
+#include "libft.h"
 
 #define BUFFER_SIZE 30
 #define texturewidth 64
@@ -38,6 +38,7 @@
 #define NUMRAYS (WINDOW_WIDTH / WALLSTRIPWIDTH)
 #define Minimapfac 0.2
 
+char				**s3;
 int					g_tab[10][10];
 void				*g_mlx_ptr;
 void				*g_win_ptr;
@@ -175,7 +176,7 @@ t_params			param;
 int					g_count;
 char				*s;
 void				treatmap(char *line);
-char				**ft_split(char *s, char c);
+char				**ft_split(char *str, char c);
 int					g_spritecount;
 
 typedef struct	s_sprite
@@ -247,7 +248,7 @@ f_param				g_render;
 char					**mapp;
 
 void	remplirmap(char **map);
-void	swappingmaps(char **map);
+void	swappingmaps(char **map, char **S);
 void	handleerroe1(void);
 void	findingnumofcols(void);
 void	treatmap(char *string);
@@ -271,7 +272,6 @@ void	traitwetexture(char **s, int fd);
 void	traitestexture(char **s, int fd);
 void	traitspactex(char **s, int fd);
 void	checkdigit(char **s, int i);
-void	*free_split(char **split, int k);
 
 
 
